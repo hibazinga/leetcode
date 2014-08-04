@@ -1,0 +1,30 @@
+class Solution:
+    # @return a list of lists of length 3, [[val1,val2,val3]]
+    def threeSum(self, num):
+        numlist=[]
+        num.sort()
+        #print num
+        for i in range(0,len(num)):
+            if(i>=1 and num[i]==num[i-1]):
+                continue
+            left=i+1
+            right=len(num)-1
+            while (right>left):
+                if(num[left]+num[right]==0-num[i]):
+                    if(len(numlist)>=1 and [num[i],num[left],num[right]]!=numlist[len(numlist)-1]):
+                        numlist.append([num[i],num[left],num[right]])
+                    elif(len(numlist)<1):
+                        numlist.append([num[i],num[left],num[right]])
+                    left+=1
+                elif(num[left]+num[right]>0-num[i]):
+                    right-=1
+                else:#<
+                    left+=1
+        #print len(numlist)
+        return numlist
+
+
+if __name__ == '__main__':
+    a=Solution()
+    ps=a.threeSum([0,0,0,0,0,0,0,0,1,-1,-1,2,2,2,2,2,2,2,2,2,-1,-1,-1,-1,-1,-1,-1,2,2,1,1,1,1,1,1,1,1,1,1,1,1])
+    print ps
