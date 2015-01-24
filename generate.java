@@ -24,3 +24,21 @@
 		return ans;
 	}
 //
+
+
+    public List<Integer> generate(int k){
+    	List<Integer> list=new ArrayList<Integer>();
+    	list.add(2);
+    	list.add(3);
+    	for (int i = 0; i < k; i++) {
+			for (int j = 0; j < list.size(); j++) {
+				list.add(list.get(j)*2);
+				list.add(list.get(j)*3);
+			}
+			Set<Integer> set=new HashSet<Integer>();
+			set.addAll(list);
+			list.clear();
+			list.addAll(set);
+		}
+    	return list;
+    }
